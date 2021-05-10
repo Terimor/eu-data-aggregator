@@ -9,15 +9,15 @@ use JMS\Serializer\Annotation as Serializer;
 class DataEuDescription
 {
     /** @Serializer\Type("string") */
-    private string $en;
+    private ?string $en = null;
 
     /** @Serializer\Type("string") */
-    private string $de;
+    private ?string $de = null;
 
     /** @Serializer\Type("string") */
-    private string $fr;
+    private ?string $fr = null;
 
-    public function getEn(): string
+    public function getEn(): ?string
     {
         return $this->en;
     }
@@ -27,7 +27,7 @@ class DataEuDescription
         $this->en = $en;
     }
 
-    public function getDe(): string
+    public function getDe(): ?string
     {
         return $this->de;
     }
@@ -37,7 +37,7 @@ class DataEuDescription
         $this->de = $de;
     }
 
-    public function getFr(): string
+    public function getFr(): ?string
     {
         return $this->fr;
     }

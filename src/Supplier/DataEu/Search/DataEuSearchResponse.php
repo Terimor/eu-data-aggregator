@@ -4,6 +4,7 @@
 namespace App\Supplier\DataEu\Search;
 
 
+use App\Supplier\DataEu\Common\Collection\DataEuDatasetCollection;
 use JMS\Serializer\Annotation as Serializer;
 
 class DataEuSearchResponse
@@ -11,16 +12,16 @@ class DataEuSearchResponse
     /** @Serializer\Type("bool") */
     private bool $success;
 
-    /** @Serializer\Type("array<App\Supplier\DataEu\Common\DataEuDataset>") */
-    private array $results;
+    /** @Serializer\Type("App\Supplier\DataEu\Search\DataEuResultResponse") */
+    private DataEuResultResponse $result;
 
     public function isSuccess(): bool
     {
         return $this->success;
     }
 
-    public function getResults(): array
+    public function getResult(): DataEuResultResponse
     {
-        return $this->results;
+        return $this->result;
     }
 }
