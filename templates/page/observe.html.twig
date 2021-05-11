@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/observe.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <table id="datasets-table" class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Країна</th>
+            <th>Опис(EN)</th>
+            <th>Опис(DE)</th>
+            <th>Опис(FR)</th>
+            <th>Доступні формати</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+{% endblock %}

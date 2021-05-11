@@ -8,7 +8,10 @@ use App\Api\Builder\ApiRequestBuilder;
 use App\Api\Builder\ApiResponseBuilder;
 use App\Api\Entity\Request\ApiGetDatasetRequest;
 use App\Api\Entity\Request\ApiSearchRequest;
+use App\Api\Entity\Response\ApiDatasetsResponse;
+use App\Repository\DatasetRepository;
 use App\SupplierFacade\DataEu\DataEuSupplierFacade;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,6 +58,19 @@ class ApiController
         $getDatasetRequest = $this->requestBuilder->build(ApiGetDatasetRequest::class, $data);
 
         $response = $this->dataEuSupplierFacade->getDataset($getDatasetRequest);
+
+        return $this->responseBuilder->build($response);
+    }
+
+    /**
+     * @Route("/get-all-datasets", name="get_all_datasets", methods={"GET"})
+     */
+    public function getAllDatasets(DatasetRepository $datasetRepository): Response
+    {
+        $datasets = $datasetRepository->findAll();
+
+        $response = new ApiDatasetsResponse();
+        $response->setDatasetCollection($datasets);
 
         return $this->responseBuilder->build($response);
     }

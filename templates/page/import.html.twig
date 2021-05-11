@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/import.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <label for="search-input">Пошук</label>
+        <input id="search-input" type="text"/>
+        <button type="button" class="btn btn-info" id="search-button">Шукати</button>
+    </div>
+
+    <table id="datasets-table" class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Країна</th>
+                <th>Опис(EN)</th>
+                <th>Опис(DE)</th>
+                <th>Опис(FR)</th>
+                <th>Доступні формати</th>
+                <th>Дія</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div>
+        <button id="prev-button"><</button>
+        <span id="page-number"></span>
+        <button id="next-button">></button>
+    </div>
+{% endblock %}

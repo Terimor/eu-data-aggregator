@@ -14,7 +14,11 @@ class DataEuDistributionResponseBridge
     {
         $distribution = new Distribution();
 
-        $distribution->setFormat($supplierDistribution->getFormat()->getId());
+        $format = $supplierDistribution->getFormat();
+        if (!$format) {
+            throw new UnnecessaryDistributionCoreSupplierException();
+        }
+        $distribution->setFormat($format->getId());
 
         $accessUrl = $supplierDistribution->getAccessUrl();
         if (!$accessUrl) {

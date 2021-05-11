@@ -8,10 +8,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class ApiGetDatasetRequest implements ApiRequestInterface
 {
-    /** @Serializer\Type("integer") */
-    private int $externalId;
+    /** @Serializer\Type("string") */
+    private string $externalId;
 
-    public function getExternalId(): int
+    public function getExternalId(): string
     {
         return $this->externalId;
     }

@@ -5,7 +5,7 @@ namespace App\SupplierFacade\DataEu\MethodFacade;
 
 
 use App\Api\Entity\Request\ApiSearchRequest;
-use App\Api\Entity\Response\ApiSearchResponse;
+use App\Api\Entity\Response\ApiDatasetsResponse;
 use App\Supplier\DataEu\DataEuConst;
 use App\Supplier\DataEu\Search\DataEuSearchResponse;
 use App\SupplierFacade\DataEu\Bridge\Search\DataEuSearchResponseBridge;
@@ -27,14 +27,14 @@ class DataEuSearchMethodFacade
         $this->searchResponseBridge = $searchResponseBridge;
     }
 
-    public function commit(ApiSearchRequest $searchRequest): ApiSearchResponse
+    public function commit(ApiSearchRequest $searchRequest): ApiDatasetsResponse
     {
         $stringResponse = $this->sendAndGetStringResponse($searchRequest);
 
         $response = $this->serializer->deserialize($stringResponse, DataEuSearchResponse::class, 'json');
         $datasetCollection = $this->searchResponseBridge->build($response);
 
-        $apiSearchResponse = new ApiSearchResponse();
+        $apiSearchResponse = new ApiDatasetsResponse();
         $apiSearchResponse->setDatasetCollection($datasetCollection);
 
         return $apiSearchResponse;

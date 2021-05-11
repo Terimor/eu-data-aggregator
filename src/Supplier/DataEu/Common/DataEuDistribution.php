@@ -14,14 +14,14 @@ class DataEuDistribution
     private ?string $access_url = null;
 
     /** @Serializer\Type("App\Supplier\DataEu\Common\DataEuFormat") */
-    private DataEuFormat $format;
+    private ?DataEuFormat $format = null;
 
     public function getAccessUrl(): ?string
     {
         return $this->access_url;
     }
 
-    public function getFormat(): DataEuFormat
+    public function getFormat(): ?DataEuFormat
     {
         return $this->format;
     }

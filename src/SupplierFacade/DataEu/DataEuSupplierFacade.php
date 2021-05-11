@@ -6,7 +6,7 @@ namespace App\SupplierFacade\DataEu;
 
 use App\Api\Entity\Request\ApiGetDatasetRequest;
 use App\Api\Entity\Request\ApiSearchRequest;
-use App\Api\Entity\Response\ApiSearchResponse;
+use App\Api\Entity\Response\ApiDatasetsResponse;
 use App\Api\Entity\Response\ApiSuccessResponse;
 use App\SupplierFacade\DataEu\MethodFacade\DataEuGetDatasetMethodFacade;
 use App\SupplierFacade\DataEu\MethodFacade\DataEuSearchMethodFacade;
@@ -23,7 +23,7 @@ class DataEuSupplierFacade
         $this->getDatasetMethodFacade = $getDatasetMethodFacade;
     }
 
-    public function search(ApiSearchRequest $searchRequest): ApiSearchResponse
+    public function search(ApiSearchRequest $searchRequest): ApiDatasetsResponse
     {
         return $this->searchMethodFacade->commit($searchRequest);
     }
