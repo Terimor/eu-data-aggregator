@@ -2,6 +2,10 @@ jms_serializer:
     visitors:
         xml_serialization:
             format_output: '%kernel.debug%'
+        json_serialization:
+            options: [JSON_UNESCAPED_UNICODE]
+        json_deserialization:
+            options: [JSON_UNESCAPED_UNICODE]
 #    metadata:
 #        auto_detection: false
 #        directories:

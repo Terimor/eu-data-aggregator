@@ -142,16 +142,4 @@ class Dataset
 
         return $this;
     }
-
-    public function removeDistribution(Distribution $distribution): self
-    {
-        if ($this->distributions->removeElement($distribution)) {
-            // set the owning side to null (unless already changed)
-            if ($distribution->getDataset() === $this) {
-                $distribution->setDataset(null);
-            }
-        }
-
-        return $this;
-    }
 }

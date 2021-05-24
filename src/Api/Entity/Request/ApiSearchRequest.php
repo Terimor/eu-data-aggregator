@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as Serializer;
 class ApiSearchRequest implements ApiRequestInterface
 {
     /** @Serializer\Type("string") */
-    private string $query;
+    private ?string $query;
 
     /** @Serializer\Type("int") */
     private int $page;
@@ -17,7 +17,7 @@ class ApiSearchRequest implements ApiRequestInterface
     /** @Serializer\Type("int") */
     private int $perPage;
 
-    public function getQuery(): string
+    public function getQuery(): ?string
     {
         return $this->query;
     }

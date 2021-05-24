@@ -16,6 +16,9 @@ class DataEuResultResponse
      */
     private $results = [];
 
+    /** @Serializer\Type("int") */
+    private int $count;
+
     public function getResults(): DataEuDatasetCollection
     {
         if (!$this->results instanceof DataEuDatasetCollection) {
@@ -23,5 +26,10 @@ class DataEuResultResponse
         }
 
         return $this->results;
+    }
+
+    public function getCount(): int
+    {
+        return $this->count;
     }
 }

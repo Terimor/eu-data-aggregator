@@ -20,12 +20,22 @@ class Distribution
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private string $externalId;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private string $format;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private string $downloadUrl;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private ?string $payload = null;
 
     /**
      * @ORM\ManyToOne(targetEntity=Dataset::class, inversedBy="distributions")
@@ -72,5 +82,25 @@ class Distribution
         $this->dataset = $dataset;
 
         return $this;
+    }
+
+    public function getPayload(): ?string
+    {
+        return $this->payload;
+    }
+
+    public function setPayload(string $payload): void
+    {
+        $this->payload = $payload;
+    }
+
+    public function getExternalId(): string
+    {
+        return $this->externalId;
+    }
+
+    public function setExternalId(string $externalId): void
+    {
+        $this->externalId = $externalId;
     }
 }

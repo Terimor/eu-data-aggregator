@@ -8,9 +8,10 @@ use JMS\Serializer\Annotation as Serializer;
 
 class DataEuDistribution
 {
-    /**
-     * @Serializer\Type("string")
-     */
+    /** @Serializer\Type("string") */
+    private string $id;
+
+    /** @Serializer\Type("string") */
     private ?string $access_url = null;
 
     /** @Serializer\Type("App\Supplier\DataEu\Common\DataEuFormat") */
@@ -24,5 +25,10 @@ class DataEuDistribution
     public function getFormat(): ?DataEuFormat
     {
         return $this->format;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }
