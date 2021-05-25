@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DistributionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass=DistributionRepository::class)
@@ -14,26 +15,31 @@ class Distribution
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Serializer\Type("int")
      */
     private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Type("string")
      */
     private string $externalId;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Type("string")
      */
     private string $format;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Type("string")
      */
     private string $downloadUrl;
 
     /**
      * @ORM\Column(type="text")
+     * @Serializer\Type("string")
      */
     private ?string $payload = null;
 
