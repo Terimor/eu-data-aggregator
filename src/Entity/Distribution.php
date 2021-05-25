@@ -15,7 +15,6 @@ class Distribution
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Serializer\Type("int")
      */
     private ?int $id = null;
 

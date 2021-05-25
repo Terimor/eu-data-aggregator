@@ -10,6 +10,7 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass=DatasetRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Dataset
 {
@@ -52,7 +53,7 @@ class Dataset
     private ?string $descriptionFr;
 
     /**
-     * @ORM\OneToMany(targetEntity=Distribution::class, mappedBy="dataset", orphanRemoval=true, cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity=Distribution::class, mappedBy="dataset", cascade={"remove", "persist"})
      * @Serializer\Type("ArrayCollection<App\Entity\Distribution>")
      */
     private Collection $distributions;
@@ -141,5 +142,15 @@ class Dataset
         }
 
         return $this;
+    }
+
+    /**
+     * @ORM\PreFlush()
+     */
+    public function doOnPreFlush(): void
+    {
+        foreach ($this->getDistributions() as $distribution) {
+            $distribution->setDataset($this);
+        }
     }
 }

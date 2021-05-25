@@ -48,7 +48,7 @@ class ApiController
     }
 
     /**
-     * @Route("/datasets/{id}", name="get_dataset", methods={"GET"})
+     * @Route("/datasets/{id}")
      * @ParamConverter("dataset", class="App\Entity\Dataset")
      */
     public function getDataset(Dataset $dataset): Response
@@ -67,8 +67,6 @@ class ApiController
         /** @var ApiDatasetRequest $requestObj */
         $requestObj = $this->requestBuilder->build(ApiDatasetRequest::class, $data);
         $dataset = $requestObj->getDataset();
-
-        dd($requestObj, $dataset);
 
         $em->persist($dataset);
         $em->flush();
